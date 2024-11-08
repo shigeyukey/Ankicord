@@ -22,7 +22,8 @@ import asyncio
 from typing import Union
 from threading import Thread
 
-from aqt import mw, gui_hooks
+from anki.hooks import addHook
+from aqt import mw
 
 from .pypresence import presence as pp
 from .pypresence import utils as pp_utils
@@ -220,7 +221,7 @@ class Ankicord():
         else:
             self.rpc_next_state = paren_left + str(due_count) + " cards left" + paren_right
 
-    def on_state(self, state, _old_state, *args, **kwargs):
+    def on_state(self, state, _old_state):
         """Take current state and old_state from hook; If browsing, skip
         'edit' hook; Call update"""
 
@@ -272,18 +273,18 @@ class Ankicord():
         if self.__cfg_val(self.main_cfg, 'card_count', bool):
             self.__update_rpc_next_state()
 
-    def on_browse(self, *args, **kwargs):
+    def on_browse(self, _x):
         """Handle browse state"""
         self.on_state("browse", "dummy")
 
-    def on_editor(self, *args, **kwargs):
+    def on_editor(self, _x, _y):
         """Handle editor state if not in browser"""
         if not self.skip_edit:
             self.on_state("edit", "dummy")
 
         self.skip_edit = False
 
-    def on_answer(self, *args, **kwargs):
+    def on_answer(self):
         """Handle review state"""
         self.on_state("review", "dummy")
 
@@ -298,7 +299,7 @@ ac = Ankicord()
 t = Thread(target=ac.job, daemon=True)
 t.start()
 
-gui_hooks.state_did_change.append(ac.on_state)
-gui_hooks.browser_menus_did_init.append(ac.on_browse)
-gui_hooks.editor_did_init_shortcuts.append(ac.on_editor)
-gui_hooks.reviewer_did_show_answer.append(ac.on_answer)
+addHook("afterStateChange", ac.on_state)
+addHook("browser.setupMenus", ac.on_browse)
+addHook("setupEditorShortcuts", ac.on_editor)
+addHook("showAnswer", ac.on_answer)

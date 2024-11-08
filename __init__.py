@@ -17,3 +17,18 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 from .src import main
+
+
+# Original addon page:
+# Ankicord - Discord Rich Presence (discontinued)
+# https://ankiweb.net/shared/info/1828536813
+# https://github.com/STadas/Ankicord
+
+# Related add-on:
+
+# 📱Anki Discord Sidebar - Chat room within Anki (Created by Shige)
+# https://ankiweb.net/shared/info/33855257
+
+# AnkiDiscord - Discord integration for Anki
+# https://ankiweb.net/shared/info/1133851639
+# https://github.com/Monacraft/AnkiDiscord
