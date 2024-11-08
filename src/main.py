@@ -34,11 +34,11 @@ class Ankicord():
 
         if self.__cfg_val(self.main_cfg, 'activity', bool):
             self.rpc_next_details = self.__cfg_val(self.status_cfg,
-                                                   'menu_status',
-                                                   str)
+                                                    'menu_status',
+                                                    str)
 
     def __get_resolved_cfg(self,
-                           cfg: Union[dict, list] = None) -> Union[dict, list]:
+                            cfg: Union[dict, list] = None) -> Union[dict, list]:
         """Translate config (e.g. 'on' -> True)"""
         if cfg is None:
             cfg = mw.addonManager.getConfig(__name__)['defaults']

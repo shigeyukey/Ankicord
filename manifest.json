@@ -1,5 +1,5 @@
 {
-  "package": "ankicord",
-  "name": "Ankicord - Discord Rich Presence",
-  "conflicts": ["1133851639"]
+  "package": "ankicord by Shige",
+  "name": "Ankicord - Discord Rich Presence (Custmize by Shige)",
+  "conflicts": ["1133851639", "1828536813"]
 }

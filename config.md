@@ -11,7 +11,7 @@
 
 >**count_deck**: Display cards left only for the last active deck instead of all of them. No effect if card_count is off.
 
->**counts**: Set which counts to sum up for the 'cards left' (2nd) field. (["new", "learn", "review"], which are the blue, red, green numbers respectively) Simply remove any that you don't want to be tracked from the list.
+>**counts**: Set which counts to sum up for the 'cards left' (2nd) field. (\["new", "learn", "review"], which are the blue, red, green numbers respectively) Simply remove any that you don't want to be tracked from the list.
 
 >**timer**: Display how long the rich presence has been active.<br>
 >*<time in hh:mm:ss or days, etc.\> elapsed*

@@ -1,5 +1,9 @@
 __pycache__
 __pycache__/*
+/__pycache__
 *.ankiaddon
+*.zip
 *.pyc
-meta.json
+/meta.json
+/user_files/
+
