@@ -1,5 +1,20 @@
-"""Main script for Ankicord"""
-# pylint: disable=broad-except
+# Ankicord
+#
+# Copyright (C) 2020-2024 STadas <https://github.com/STadas> <https://github.com/STadas/Ankicord>
+# Copyright (C) 2024 Shigeyuki <http://patreon.com/Shigeyuki> <https://github.com/shigeyukey/Ankicord>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import time
 import os
@@ -123,7 +138,7 @@ class Ankicord():
                 self.rpc.clear()
                 self.start_time = round(time.time())
                 return
-            
+
             show_timer = self.__cfg_val(self.main_cfg, 'timer', bool)
             start_time = self.start_time if show_timer else None
 
@@ -199,8 +214,8 @@ class Ankicord():
 
         if due_count == 0:
             self.rpc_next_state = self.__cfg_val(self.status_cfg,
-                                                 'no_cards_left_txt',
-                                                 str)
+                                                    'no_cards_left_txt',
+                                                    str)
         elif due_count == 1:
             self.rpc_next_state = paren_left + str(due_count) + " card left" + paren_right
         else:
@@ -217,15 +232,15 @@ class Ankicord():
         if state == "deckBrowser":
             self.last_deck = None
             if self.rpc_next_state != self.__cfg_val(self.status_cfg,
-                                                 'no_cards_left_txt',
-                                                 str):
+                                                    'no_cards_left_txt',
+                                                    str):
                 self.rpc_next_details = self.__cfg_val(self.status_cfg,
-                                                   'menu_status',
-                                                   str)
+                                                    'menu_status',
+                                                    str)
             else:
                 self.rpc_next_details = self.__cfg_val(self.status_cfg,
-                                                   'menu_status_no_cards',
-                                                   str)
+                                                    'menu_status_no_cards',
+                                                    str)
 
         elif state == "review":
             last_card = mw.reviewer.card
@@ -234,8 +249,8 @@ class Ankicord():
 
             self.last_deck = mw.col.decks.get(last_card.did)
             reviews_msg = self.__cfg_val(self.status_cfg,
-                                         'reviewing_status',
-                                         str)
+                                            'reviewing_status',
+                                            str)
             show_deck = self.__cfg_val(self.main_cfg, 'deck_name', bool)
 
             if show_deck:
@@ -246,14 +261,14 @@ class Ankicord():
             self.last_deck = None
             self.skip_edit = True
             self.rpc_next_details = self.__cfg_val(self.status_cfg,
-                                                   'browsing_status',
-                                                   str)
+                                                    'browsing_status',
+                                                    str)
 
         elif state == "edit":
             self.last_deck = None
             self.rpc_next_details = self.__cfg_val(self.status_cfg,
-                                                   'editing_status',
-                                                   str)
+                                                    'editing_status',
+                                                    str)
 
         if self.__cfg_val(self.main_cfg, 'card_count', bool):
             self.__update_rpc_next_state()
