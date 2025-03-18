@@ -21,7 +21,6 @@ import os
 import asyncio
 from typing import Union
 from threading import Thread
-import platform
 
 from aqt import mw, gui_hooks
 
@@ -79,11 +78,8 @@ class Ankicord():
 
     def connect_rpc(self) -> None:
         """Connect to the Discord Rich Presence"""
+        # https://forums.ankiweb.net/t/can-someone-help-me-with-this-debug/56766
         try:
-            if platform.system()=='Windows':
-                # https://forums.ankiweb.net/t/can-someone-help-me-with-this-debug/56766
-                # https://stackoverflow.com/a/66772242
-                asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
             asyncio.set_event_loop(pp.get_event_loop(True))
             self.rpc = pp.Presence(self.cfg_disc_id if self.cfg_disc_id else self.default_disc_id)
             self.rpc.connect()
