@@ -12,7 +12,6 @@ def create_ankiaddon():
         print(f'{ADDON_NAME}.ankiaddon already exists.')
         return
 
-
     # 現在のﾃﾞｨﾚｸﾄﾘを取得
     current_dir = os.getcwd()
 
@@ -26,7 +25,6 @@ def create_ankiaddon():
     # exclude_dirs = ['__pycache__', 'bundle03', 'user_files', '.vscode']
     exclude_exts = ['.ankiaddon', ".zip"]
     exclude_files = ['meta.json', zip_name, "zzz_template_00.md", ".gitignore","zzz_makeAnkiAddonFile.py"]
-
 
     # Zipﾌｧｲﾙを作成
     with zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
@@ -52,7 +50,6 @@ def create_ankiaddon():
 
         if is_empty:
             os.remove(zip_name)
-
 
 # ｽｸﾘﾌﾟﾄを実行
 create_ankiaddon()
